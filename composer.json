@@ -1,0 +1,6 @@
+{
+    "name": "trzcin/wypieki",
+    "require": {
+        "mongodb/mongodb": "1.1.0"
+    }
+}

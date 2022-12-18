@@ -1,0 +1,43 @@
+#content {
+    padding: 125px 50px 100px 50px;
+}
+
+#content>img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+#main-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 850px) {
+    #main-info {
+        display: block;
+    }
+
+    #main-info table {
+        margin-top: 20px;
+    }
+}
+
+#main-info td {
+    border: 1px solid var(--secondary-text);
+    transition: border var(--theme-transition) ease-in-out;
+    padding: 5px 10px;
+}
+
+h2 {
+    color: var(--secondary-text);
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+ul,
+ol {
+    margin-top: 10px;
+}
