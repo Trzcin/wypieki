@@ -13,7 +13,8 @@ class Controller
     public function view($view, $data = [])
     {
         $data['view'] = $view;
-        $is_auth = $this->is_auth();
+        $data['is_auth'] = $this->is_auth();
+        $data['username'] = $this->is_auth() ? $_SESSION['name'] : '';
         (file_exists(APP_ROOT . '/views/' . $view . '.php')) ?
             include_once APP_ROOT . '/views/' . $view . '.php' :
             die('View' . $view . ' does not exist');

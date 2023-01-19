@@ -3,6 +3,7 @@
     --primary-color: #da7b26;
     --text-color: #fff;
     --secondary-text: #eee;
+    --error-color: #e63946;
     --light-color: #bbb;
     --input-color: hsl(30, 6%, 20%);
     --border-radius: 10px;
@@ -30,6 +31,7 @@
     margin: 0;
     box-sizing: border-box;
     transition: color var(--theme-transition) ease-in-out;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -44,12 +46,13 @@ html {
 
 body {
     background-color: var(--background-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
     transition: background-color var(--theme-transition) ease-in-out;
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -234,18 +237,24 @@ nav>div a:hover {
     transform: scaleY(1) translateX(-50%);
 }
 
-.nav-btn {
-    display: flex;
+.btn-link {
+    display: inline-flex;
     gap: 5px;
     padding: 8px 16px;
     background-color: var(--primary-color);
     border-radius: var(--border-radius);
+    text-decoration: none;
+    color: white;
+    width: fit-content;
     justify-content: center;
     align-items: center;
     font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.nav-btn:hover {
+.btn-link:hover {
     text-decoration: none;
     filter: brightness(1.1);
 }
@@ -323,6 +332,7 @@ footer {
     padding: 20px 40px;
     color: #fff;
     width: 100vw;
+    margin-top: auto;
 }
 
 footer a {
@@ -331,14 +341,12 @@ footer a {
     display: block;
 }
 
-footer h3 {
-    font-weight: 600;
+footer a:hover {
+    text-decoration: underline;
 }
 
-
-.footer-b {
-    position: absolute;
-    bottom: 0;
+footer h3 {
+    font-weight: 600;
 }
 
 #columns {
@@ -364,4 +372,84 @@ footer h3 {
 #to-top {
     text-align: center;
     margin-top: 20px;
+}
+
+.check {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 20px;
+}
+
+.check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--input-color);
+    transition: background-color var(--theme-transition) ease-in-out;
+}
+
+.check:hover input~.checkmark {
+    filter: brightness(1.3);
+}
+
+.check input:checked~.checkmark {
+    background-color: var(--primary-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.check input:checked~.checkmark:after {
+    display: block;
+}
+
+.check .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkmark-inverted {
+    background-color: var(--background-color);
+    border: 1px solid var(--text-color);
+    top: -8px;
+    left: 12px;
+}
+
+.form-error {
+    margin-top: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: var(--error-color);
+    color: white;
+    border-radius: var(--border-radius);
+    width: fit-content;
 }

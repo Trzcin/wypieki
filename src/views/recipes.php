@@ -77,7 +77,4 @@
         </div>
     </div>
 </main>
-<?php
-$footer_class = 'footer-b';
-include 'partials/footer.php';
-?>
+<?php include 'partials/footer.php'; ?>

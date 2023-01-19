@@ -3,7 +3,7 @@
     <div id="hero-background"></div>
 
     <header>
-        <h1>Domowe Wypieki <?= $data['auth'] ?></h1>
+        <h1>Domowe Wypieki</h1>
         <p>Najlepsze przepisy na Twoim localhostcie.</p>
     </header>
 
@@ -16,9 +16,9 @@
             </a>
         </div>
         <div class="card hero-card">
-            <a href="/gallery">
-                <h2>Galeria</h2>
-                <p>Przejrzyj galerię rozmaitych smakołyków.</p>
+            <a href="/images/">
+                <h2>Zdjęcia</h2>
+                <p>Przejrzyj zdjęcia rozmaitych smakołyków.</p>
                 <img src="/static/assets/icons/right.svg" alt="przejdź do linku" />
             </a>
         </div>

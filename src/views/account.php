@@ -3,6 +3,12 @@
     <form action="/users/register" method="POST">
         <h2>Załóż Konto</h2>
 
+        <?php if (isset($data['register_error'])) : ?>
+            <p class="form-error"><?= $data['register_error'] ?></p>
+        <?php endif; ?>
+
+        <label for="email">Adres email</label>
+        <input type="email" id="email" name="email" required>
         <label for="name">Nazwa Użytkownika</label>
         <input type="text" id="name" name="name" required>
         <label for="password">Hasło</label>
@@ -16,6 +22,10 @@
     <form action="/users/login" method="POST">
         <h2>Zaloguj Się</h2>
 
+        <?php if (isset($data['login_error'])) : ?>
+            <p class="form-error"><?= $data['login_error'] ?></p>
+        <?php endif; ?>
+
         <label for="name">Nazwa Użytkownika</label>
         <input type="text" id="name" name="name" required>
         <label for="password">Hasło</label>
@@ -24,7 +34,4 @@
         <button type="submit">Zaloguj Się</button>
     </form>
 </main>
-<?php
-$footer_class = 'footer-b';
-include 'partials/footer.php';
-?>
+<?php include 'partials/footer.php'; ?>

@@ -1,5 +1,7 @@
 <?php
 
+use MongoDB\BSON\ObjectID;
+
 class Database
 {
     protected static $username = 'wai_web';
@@ -22,5 +24,13 @@ class Database
 
         $db = $mongo->wai;
         return $db;
+    }
+
+    public static function toObjectIDArray($string_ids)
+    {
+        $map_func = function ($val) {
+            return new ObjectID($val);
+        };
+        return array_map($map_func, $string_ids);
     }
 }

@@ -8,7 +8,9 @@
     <title>Domowe Wypieki</title>
     <link rel="shortcut icon" href="/static/assets/icons/bread.svg" type="image/x-icon" />
     <link rel="stylesheet" href="/static/css/global.css" />
-    <link rel="stylesheet" href="/static/css/<?php echo $data['view'] ?>.css" />
+    <?php if (file_exists(APP_ROOT . '/web/static/css/' . $data['view'] . '.css')) : ?>
+        <link rel="stylesheet" href="/static/css/<?php echo $data['view'] ?>.css" />
+    <?php endif; ?>
     <script src="/static/js/global.js" defer></script>
 </head>
 
@@ -35,7 +37,7 @@
 
             <div id="desktop-nav">
                 <a <?php if ($data['view'] == 'index') : ?> href="#" class="active" <?php else : ?> href="/" <?php endif; ?>>Strona Główna</a>
-                <a <?php if ($data['view'] == 'gallery') : ?> href="#" class="active" <?php else : ?> href="/gallery" <?php endif; ?>>Galeria</a>
+                <a <?php if ($data['view'] == 'images') : ?> href="#" class="active" <?php else : ?> href="/images/" <?php endif; ?>>Zdjęcia</a>
                 <div class="dropdown-wrapper">
                     <a <?php if ($data['view'] == 'recipes') : ?> href="#" class="active" <?php else : ?> href="/recipes" <?php endif; ?>>Przepisy</a>
 
@@ -46,13 +48,13 @@
                     </div>
                 </div>
                 <a <?php if ($data['view'] == 'form') : ?> href="#" class="active" <?php else : ?> href="/form" <?php endif; ?>>Podziel się Przepisem</a>
-                <?php if (!$is_auth) : ?>
-                    <a <?php if ($data['view'] == 'account') : ?> href="#" <?php else : ?> href="/account" <?php endif; ?> class="nav-btn">
+                <?php if (!$data['is_auth']) : ?>
+                    <a <?php if ($data['view'] == 'account') : ?> href="#" <?php else : ?> href="/users/account" <?php endif; ?> class="btn-link">
                         <img src="/static/assets/icons/User.svg" alt="użytkownik">
                         <p>Konto</p>
                     </a>
                 <?php else : ?>
-                    <a href="/users/logout" class="nav-btn">
+                    <a href="/users/logout" class="btn-link">
                         <img src="/static/assets/icons/User.svg" alt="użytkownik">
                         <p>Wyloguj</p>
                     </a>
@@ -68,7 +70,7 @@
 
                 <div id="mobile-nav-container">
                     <a <?php if ($data['view'] == 'index') : ?> href="#" class="active" <?php else : ?> href="/" <?php endif; ?>>Strona Główna</a>
-                    <a <?php if ($data['view'] == 'gallery') : ?> href="#" class="active" <?php else : ?> href="/gallery" <?php endif; ?>>Galeria</a>
+                    <a <?php if ($data['view'] == 'images') : ?> href="#" class="active" <?php else : ?> href="/images/" <?php endif; ?>>Zdjęcia</a>
                     <div class="dropdown-mobile-wrapper">
                         <input type="checkbox" id="mobile-drop-toggle" />
                         <label for="mobile-drop-toggle">Przepisy</label>

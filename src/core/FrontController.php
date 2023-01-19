@@ -40,7 +40,7 @@ class FrontController
         }
 
         #additional parameters
-        $this->params = $action ? array_values(array_slice($action, isset($action[1]) ? 0 : 1)) : [];
+        $this->params = $action ? array_values($action) : [];
 
         #call the currentMethod on the currentController with params
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
